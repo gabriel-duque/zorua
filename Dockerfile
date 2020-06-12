@@ -16,5 +16,6 @@ RUN upx /zorua
 FROM scratch
 
 COPY --from=0 /zorua /zorua
+COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 ENTRYPOINT ["/zorua"]
