@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -121,15 +122,17 @@ func updateRecord(configuration Configuration, ip net.IP) {
 
 /* Entrypoint of our program */
 func main() {
-	filename := "examples/configuration.json"
-	log.Println("Using configuration file:", filename)
+	filename := flag.String("config", "zorua.json", "path to the JSON configuration file")
+	flag.Parse()
 
-	configuration := readConfig(filename)
+	log.Println("Using configuration file:", *filename)
+	configuration := readConfig(*filename)
 	log.Println("Found valid configuration for domain:", configuration.Domain)
 
 	ipv4 := getCurrentIP()
 	log.Println("Current IPv4:", ipv4)
 
+	log.Println("Checking if we need to update our record")
 	if needsUpdate(configuration.Domain, ipv4) {
 		log.Println("Updating record")
 		updateRecord(configuration, ipv4)
