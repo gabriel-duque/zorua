@@ -1,0 +1,7 @@
+{
+  "Domain": "test.example.com",
+  "Credentials": {
+    "Username": "TestUsername",
+    "Password": "TestPassword"
+  }
+}
