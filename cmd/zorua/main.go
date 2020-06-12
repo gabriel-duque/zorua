@@ -117,7 +117,7 @@ func updateRecord(configuration Configuration, ip net.IP) {
 		log.Fatal(err)
 	}
 
-	log.Println("Response status:", response.StatusCode, response.Status, "Response:", string(body))
+	log.Println("Response status:", response.Status, "Response:", string(body))
 }
 
 /* Entrypoint of our program */
