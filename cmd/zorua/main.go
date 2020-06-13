@@ -118,10 +118,10 @@ func updateRecord(configuration Configuration, ip net.IP) {
 	if err != nil {
 		log.Fatal(err)
 	} else if strBody != fmt.Sprintf("good %v", ip) && strBody != fmt.Sprintf("nochg %v", ip) {
-		log.Fatal("Response status:", response.Status, "Response:", strBody)
+		log.Fatal(" Response: ", strBody)
 	}
 
-	log.Println("Response status:", response.Status, "Response:", strBody)
+	log.Println("Response:", strBody)
 }
 
 /* Entrypoint of our program */
