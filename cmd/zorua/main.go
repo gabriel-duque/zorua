@@ -122,7 +122,7 @@ func updateRecord(configuration Configuration, ip net.IP) {
 
 /* Entrypoint of our program */
 func main() {
-	filename := flag.String("config", "zorua.json", "path to the JSON configuration file")
+	filename := flag.String("config", "/etc/zorua/config.json", "path to the JSON configuration file")
 	flag.Parse()
 
 	log.Println("Using configuration file:", *filename)
