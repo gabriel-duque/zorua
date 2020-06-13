@@ -113,13 +113,15 @@ func updateRecord(configuration Configuration, ip net.IP) {
 	}(response)
 
 	body, err := ioutil.ReadAll(response.Body)
+	strBody := string(body)
+
 	if err != nil {
 		log.Fatal(err)
-	} else if response.StatusCode != 200 {
-		log.Fatal("Response status:", response.Status, "Response:", string(body))
+	} else if strBody != fmt.Sprintf("good %v", ip) && strBody != fmt.Sprintf("nochg %v", ip) {
+		log.Fatal("Response status:", response.Status, "Response:", strBody)
 	}
 
-	log.Println("Response status:", response.Status, "Response:", string(body))
+	log.Println("Response status:", response.Status, "Response:", strBody)
 }
 
 /* Entrypoint of our program */
