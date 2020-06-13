@@ -19,6 +19,28 @@ type Configuration struct {
 	}
 }
 
+/* Read configuration file */
+func readConfig(filename string) (configuration Configuration) {
+	/* Read the whole file into a buffer */
+	content, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	/* Parse and validate JSON */
+	if err := json.Unmarshal(content, &configuration); err != nil {
+		log.Fatal(err)
+	} else if configuration.Domain == "" {
+		log.Fatal("Missing or empty 'Domain' field in JSON configuration.")
+	} else if configuration.Credentials.Username == "" {
+		log.Fatal("Missing or empty 'Credentials.Username' field in JSON configuration.")
+	} else if configuration.Credentials.Password == "" {
+		log.Fatal("Missing or empty 'Credentials.Password' field in JSON configuration.")
+	}
+
+	return
+}
+
 /* Get our public IP address record by fetching `https://domains.google.com/checkip` */
 func getCurrentIP() (ip net.IP) {
 	/* Get ipv4 */
@@ -62,28 +84,6 @@ func needsUpdate(domain string, ip net.IP) (update bool) {
 	return
 }
 
-/* Read configuration file */
-func readConfig(filename string) (configuration Configuration) {
-	/* Read the whole file into a buffer */
-	content, err := ioutil.ReadFile(filename)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	/* Parse and validate JSON */
-	if err := json.Unmarshal(content, &configuration); err != nil {
-		log.Fatal(err)
-	} else if configuration.Domain == "" {
-		log.Fatal("Missing or empty 'Domain' field in JSON configuration.")
-	} else if configuration.Credentials.Username == "" {
-		log.Fatal("Missing or empty 'Credentials.Username' field in JSON configuration.")
-	} else if configuration.Credentials.Password == "" {
-		log.Fatal("Missing or empty 'Credentials.Password' field in JSON configuration.")
-	}
-
-	return
-}
-
 /* This updates the record for the given IP address using the given configuration */
 func updateRecord(configuration Configuration, ip net.IP) {
 	url := fmt.Sprintf("https://domains.google.com/nic/update?hostname=%v&myip=%v", configuration.Domain, ip)
@@ -115,6 +115,8 @@ func updateRecord(configuration Configuration, ip net.IP) {
 	body, err := ioutil.ReadAll(response.Body)
 	if err != nil {
 		log.Fatal(err)
+	} else if response.StatusCode != 200 {
+		log.Fatal("Response status:", response.Status, "Response:", string(body))
 	}
 
 	log.Println("Response status:", response.Status, "Response:", string(body))
