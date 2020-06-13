@@ -11,10 +11,6 @@ RUN CGO_ENABLED=0 go build \
                         -o /zorua \
                         main.go
 
-RUN apk add --no-cache upx
-
-RUN upx /zorua
-
 # This will be the final image
 
 FROM scratch
