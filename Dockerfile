@@ -2,7 +2,7 @@
 
 FROM golang:alpine
 
-ADD cmd/zorua/main.go .
+COPY cmd/zorua/main.go .
 
 RUN CGO_ENABLED=0 go build \
                         -a \
@@ -10,6 +10,7 @@ RUN CGO_ENABLED=0 go build \
                         -tags netgo \
                         -o /zorua \
                         main.go
+
 
 # This will be the final image
 
@@ -22,5 +23,7 @@ COPY --from=0 /zorua /zorua
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 USER 1000:1000
+
+VOLUME ["/zorua.json"]
 
 ENTRYPOINT ["/zorua"]
