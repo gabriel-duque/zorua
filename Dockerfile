@@ -1,3 +1,5 @@
+# We just use this as a builder image
+
 FROM golang:alpine
 
 ADD cmd/zorua/main.go .
@@ -13,9 +15,14 @@ RUN apk add --no-cache upx
 
 RUN upx /zorua
 
+# This will be the final image
+
 FROM scratch
 
+LABEL maintainer="gabriel@zuh0.com"
+
 COPY --from=0 /zorua /zorua
+
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 ENTRYPOINT ["/zorua"]
