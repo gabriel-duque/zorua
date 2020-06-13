@@ -24,6 +24,6 @@ COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.
 
 USER 1000:1000
 
-VOLUME ["/zorua.json"]
+VOLUME ["/etc/zorua"]
 
 ENTRYPOINT ["/zorua"]
