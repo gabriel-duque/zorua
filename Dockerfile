@@ -25,4 +25,6 @@ COPY --from=0 /zorua /zorua
 
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
+USER 1000:1000
+
 ENTRYPOINT ["/zorua"]
