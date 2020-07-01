@@ -20,4 +20,5 @@ spec:
             volumeMounts:
               - mountPath: /etc/zorua
                 name: zorua-config
+                readOnly: true
           restartPolicy: OnFailure
