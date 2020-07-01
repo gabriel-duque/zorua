@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-type Configuration struct {
+type configuration struct {
 	Domain      string
 	Credentials struct {
 		Username string
@@ -20,7 +20,7 @@ type Configuration struct {
 }
 
 /* Read configuration file */
-func readConfig(filename string) (configuration Configuration) {
+func readConfig(filename string) (configuration configuration) {
 	/* Read the whole file into a buffer */
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -85,7 +85,7 @@ func needsUpdate(domain string, ip net.IP) (update bool) {
 }
 
 /* This updates the record for the given IP address using the given configuration */
-func updateRecord(configuration Configuration, ip net.IP) {
+func updateRecord(configuration configuration, ip net.IP) {
 	url := fmt.Sprintf("https://domains.google.com/nic/update?hostname=%v&myip=%v", configuration.Domain, ip)
 	log.Println("Query URL for update:", url)
 

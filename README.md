@@ -1,4 +1,4 @@
-# zorua [![GitHub license](https://img.shields.io/github/license/zuh0/zorua.svg)](https://github.com/zuh0/zorua/blob/master/LICENSE.md) [![Docker image size](https://img.shields.io/docker/image-size/zuh0/zorua/latest)](https://hub.docker.com/r/zuh0/zorua) [![Docker pulls](https://img.shields.io/docker/pulls/zuh0/zorua)](https://hub.docker.com/r/zuh0/zorua/)
+# zorua [![GitHub license](https://img.shields.io/github/license/zuh0/zorua.svg)](https://github.com/zuh0/zorua/blob/master/LICENSE.md) [![Go Report Card](https://goreportcard.com/badge/github.com/zuh0/zorua)](https://goreportcard.com/report/github.com/zuh0/zorua) [![Docker image size](https://img.shields.io/docker/image-size/zuh0/zorua/latest)](https://hub.docker.com/r/zuh0/zorua) [![Docker pulls](https://img.shields.io/docker/pulls/zuh0/zorua)](https://hub.docker.com/r/zuh0/zorua/)
 
 a simple Go client to update dynamic DNS synthetic records for Google Domains
 
