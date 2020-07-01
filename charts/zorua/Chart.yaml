@@ -1,0 +1,12 @@
+apiVersion: v2
+name: zorua
+version: 1.0.0
+description: A Dynamic DNS client for Google Domains written in Golang
+home: https://github.com/zuh0/zorua
+sources:
+  - https://github.com/zuh0/zorua
+maintainers:
+  - name: zuh0
+    email: gabriel@zuh0.com
+    url: https://github.com/zuh0
+appVersion: master

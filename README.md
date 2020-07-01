@@ -54,3 +54,31 @@ architectures:
 ```
     $ docker run -v /path/to/zorua-config.json:/etc/zorua/config.json:ro zuh0/zorua
 ```
+
+## Helm
+
+This repository contains a Helm chart to deploy `zorua` to a Kubernetes cluster
+easily.
+
+To install the helm chart you can simply create your own values file
+`my-values.yaml` which could look like this:
+
+```
+# The cronExpression field is optional and will default to this:
+cronExpression: "*/5 * * * *"
+
+domain: example.com
+credentials:
+  username: MyUsername
+  password: MyPassword
+```
+
+then
+
+```
+    $ helm install zorua charts/zorua -f my-values.yaml
+```
+
+This will setup `zorua` as a Kubernetes cron job checking for an IP update
+every 5 minutes (you can change this interval by setting the `cronExpression`
+field in your values file).
