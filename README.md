@@ -7,8 +7,8 @@ a simple Go client to update dynamic DNS synthetic records for Google Domains
 In order to build `zorua` you can just:
 
 ```
-    $ cd cmd/zorua 
-    $ go build
+$ cd cmd/zorua 
+$ go build
 ```
 
 This will produce an executable file called `zorua` which you can run directly.
@@ -52,7 +52,7 @@ architectures:
 * armv8 (aarch64)
 
 ```
-    $ docker run -v /path/to/zorua-config.json:/etc/zorua/config.json:ro zuh0/zorua
+$ docker run -v /path/to/zorua-config.json:/etc/zorua/config.json:ro zuh0/zorua
 ```
 
 ## Helm
@@ -76,7 +76,7 @@ credentials:
 then
 
 ```
-    $ helm install zorua charts/zorua -f my-values.yaml
+$ helm install zorua charts/zorua -f my-values.yaml
 ```
 
 This will setup `zorua` as a Kubernetes cron job checking for an IP update
