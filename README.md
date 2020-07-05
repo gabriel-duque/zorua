@@ -76,7 +76,7 @@ credentials:
 then
 
 ```
-$ helm install zorua charts/zorua -f my-values.yaml
+$ helm install zorua chart/zorua -f my-values.yaml
 ```
 
 This will setup `zorua` as a Kubernetes cron job checking for an IP update
