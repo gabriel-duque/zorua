@@ -57,8 +57,8 @@ $ docker run -v /path/to/zorua-config.json:/etc/zorua/config.json:ro zuh0/zorua
 
 ## Helm
 
-This repository contains a Helm chart to deploy `zorua` to a Kubernetes cluster
-easily.
+A helm chart for `zorua` is available in [this](https://github.com/zuh0/sadm)
+repository.
 
 To install the helm chart you can simply create your own values file
 `my-values.yaml` which could look like this:
@@ -73,10 +73,10 @@ credentials:
   password: MyPassword
 ```
 
-then
+Then install it like this from the root of the `sadm` repository:
 
 ```
-$ helm install zorua chart/zorua -f my-values.yaml
+$ helm install zorua zorua -f my-values.yaml
 ```
 
 This will setup `zorua` as a Kubernetes cron job checking for an IP update

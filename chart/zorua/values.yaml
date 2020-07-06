@@ -1,5 +1,0 @@
-cronExpression: "*/5 * * * *"
-domain:
-credentials:
-  username:
-  password:
