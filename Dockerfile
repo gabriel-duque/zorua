@@ -14,7 +14,8 @@ LABEL maintainer="gabriel@zuh0.com"
 
 COPY --from=0 /zorua /zorua
 
-COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=0 /etc/ssl/certs/ca-certificates.crt \
+              /etc/ssl/certs/ca-certificates.crt
 
 USER 1000:1000
 
