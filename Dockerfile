@@ -4,13 +4,7 @@ FROM golang:alpine
 
 COPY cmd/zorua/main.go .
 
-RUN CGO_ENABLED=0 go build \
-                        -a \
-                        -ldflags='-w -s -extldflags=-static' \
-                        -tags netgo \
-                        -o /zorua \
-                        main.go
-
+RUN CGO_ENABLED=0 go build -a -ldflags='-w -s' -o /zorua main.go
 
 # This will be the final image
 
