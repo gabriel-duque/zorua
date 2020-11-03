@@ -25,12 +25,12 @@ func readConfig(filename string) (configuration configuration) {
 	/* Read the whole file into a buffer */
 	content, err := ioutil.ReadFile(filename)
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
 
 	/* Parse and validate JSON */
 	if err := json.Unmarshal(content, &configuration); err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	} else if configuration.Domain == "" {
 		log.Println("Missing or empty 'Domain' field in JSON configuration.")
 	} else if configuration.Credentials.Username == "" {
