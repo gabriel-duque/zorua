@@ -3,5 +3,6 @@
   "Credentials": {
     "Username": "TestUsername",
     "Password": "TestPassword"
-  }
+  },
+  "SleepTime": 1
 }
