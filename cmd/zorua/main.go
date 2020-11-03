@@ -37,8 +37,8 @@ func readConfig(filename string) (configuration configuration) {
 		log.Println("Missing or empty 'Credentials.Username' field in JSON configuration.")
 	} else if configuration.Credentials.Password == "" {
 		log.Println("Missing or empty 'Credentials.Password' field in JSON configuration.")
-	} else if configuration.SleepTime == 0 {
-		configuration.SleepTime = 5
+	} else if configuration.SleepTime <= 0 {
+		configuration.SleepTime = 1
 	}
 
 	return
